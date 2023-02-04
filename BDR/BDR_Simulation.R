@@ -161,11 +161,8 @@ doParallel::registerDoParallel(cl = my.cluster)
 foreach::getDoParRegistered()
 
 results = c()
-# for(n in c(50, 100, 200, 300, 400, 500)){
-# for(n in c(300, 400, 500)){
-for(n in c(300, 400)){
+for(n in c(50, 100, 200, 300, 400)){
   for(m in c(50, 100, 250, 500, 1000, 2000)){
-  # for(n in c(50)) { for(m in c(50)) {
     print(paste("Processing n = ", n, "and m = ", m))
 
     # out_n_m <- foreach(
