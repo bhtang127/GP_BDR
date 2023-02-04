@@ -1,12 +1,7 @@
 library(tidyverse)
 
 ## KDE and GP fit
-xx = read.table("simulation_results_bk", header=TRUE)
-yy = read.table("simulation_results", header=TRUE)
-zz = read.table("simulation_results_bk2", header=TRUE)
-ww = read.table("simulation_results_bk3", header=TRUE)
-
-xx = rbind(xx, yy, zz, ww)
+xx = read.table("simulation_results", header=TRUE)
 
 ss = xx %>% group_by(V1, V2) %>% summarise(
   exp_l2_mean = mean(V4) / 100,
@@ -14,20 +9,9 @@ ss = xx %>% group_by(V1, V2) %>% summarise(
   kde_l2_mean = mean(V5) / 100,
   kde_l2_std = sqrt(var(V5) / n()) / 100
 )
-# ss = xx %>% group_by(V1, V2) %>% summarise(
-#   exp_l2_mean = median(V4) / 100,
-#   exp_l2_std = sqrt(var(V4) / n()) / 100,
-#   kde_l2_mean = median(V5) / 100,
-#   kde_l2_std = sqrt(var(V5) / n()) / 100
-# )
 
 ## BDR fit
 bb = read.table("BDR/bdr_simulation_results", header=TRUE)
-bb2 = read.table("BDR/bdr_simulation_results_bk", header=TRUE)
-bb3 = read.table("BDR/bdr_simulation_results_bk2", header=TRUE)
-
-bb = rbind(bb, bb2)
-bb = rbind(bb, bb3)
 
 ss2 = bb %>% group_by(V1, V2) %>% summarise(
   bdr_k10_l2_mean = mean(V4) / 100,
@@ -35,12 +19,6 @@ ss2 = bb %>% group_by(V1, V2) %>% summarise(
   bdr_k50_l2_mean = mean(V5) / 100,
   bdr_k50_l2_std = sqrt(var(V5) / n()) / 100
 )
-# ss2 = bb %>% group_by(V1, V2) %>% summarise(
-#   bdr_k10_l2_mean = median(V4) / 100,
-#   bdr_k10_l2_std = sqrt(var(V4) / n()) / 100,
-#   bdr_k50_l2_mean = median(V5) / 100,
-#   bdr_k50_l2_std = sqrt(var(V5) / n()) / 100
-# )
 
 
 ## plot
