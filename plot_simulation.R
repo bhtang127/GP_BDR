@@ -25,7 +25,7 @@ ss2 = bb %>% group_by(V1, V2) %>% summarise(
 data.frame(
   n = c(ss$V1, ss$V1, ss2$V1, ss2$V1),
   m = c(ss$V2, ss$V2, ss2$V2, ss2$V2),
-  method = c(rep("EXP", nrow(ss)), rep("KDE", nrow(ss)), 
+  method = c(rep("GPDR", nrow(ss)), rep("KDE", nrow(ss)), 
              rep("BDR\n (k=10)", nrow(ss2)), rep("BDR\n (k=50)", nrow(ss2))),
   L2 = c(ss$exp_l2_mean, ss$kde_l2_mean, ss2$bdr_k10_l2_mean, ss2$bdr_k50_l2_mean), 
   std = c(ss$exp_l2_std, ss$kde_l2_std, ss2$bdr_k10_l2_std, ss2$bdr_k50_l2_std)
@@ -43,7 +43,7 @@ data.frame(
 p2 = data.frame(
   n = c(ss$V1, ss$V1, ss2$V1, ss2$V1),
   m = c(ss$V2, ss$V2, ss2$V2, ss2$V2),
-  method = c(rep("EXP", nrow(ss)), rep("KDE", nrow(ss)), 
+  method = c(rep("GPDR", nrow(ss)), rep("KDE", nrow(ss)), 
              rep("BDR\n(k=10)\n", nrow(ss2)), rep("BDR\n(k=50)\n", nrow(ss2))),
   L2 = c(ss$exp_l2_mean, ss$kde_l2_mean, ss2$bdr_k10_l2_mean, ss2$bdr_k50_l2_mean), 
   std = c(ss$exp_l2_std, ss$kde_l2_std, ss2$bdr_k10_l2_std, ss2$bdr_k50_l2_std)
